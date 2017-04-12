@@ -1,39 +1,40 @@
-## Addresses
+## Geofencing support
 
-The purpose of this challenge is to build upon the previous task and add full address support to each stop. This includes latitude and longitude.
+This task builds upon the previous two challenges, using our basic transportation and address support to mark a stop as visited. If we receive a message from a carrier saying they're close to the location, we're going to mark the stop as visited. This is done using latitude, longtitude, and a formula to calculate the distance between two points on Earth.
 
 ## Task
 
-Take input from the command line to create a multi-stop "load" or "delivery" as in the last challenge. This time, instead of a generic name for a stop, we'll take an address entered in the command line, break it into it's components and geocode it.
+Take input from the command line after creating a delivery and mark a stop as visited. At a high-level the following happens when we attempt to simulate an "in-transit" address near an existing one
 
-At each stop, an address is required with the following data:
-
-- Address line 1
-- City
-- State
-- Zipcode
-- Country
-- Latitude
-- Longitude
+1. Calculate the distance between the two locations using a formula that works on the Earth.
+2. If it falls within a certain tolerances, say 10 miles, mark the stop as visited
 
 The input/output would look something like below
 
 ```
 $ ruby cloud_logistics.rb
 Number of stops:
-> 3
+> 2
 Carrier name:
 > YRC
 Origin:
 > 333 Las Ols Way, Ft Lauderdale, FL. 33301
-1st stop:
-> 222 Lakeviw Ave, West Palm Beach, FL. 33401
 Destination:
+> 222 Lakeviw Ave, West Palm Beach, FL. 33401
+Current location:
+> 333 Las Olas Way, Ft Lauderdale, FL. 33301
+Current location:
+Bill of lading number 1, being carried by YRC
+ - * Origin: 333 Las Olas Way, Ft Lauderdale, FL. 33301, 26.117569, -80.141218
+ - Destination: 222 Lakeview Ave, West Palm Beach, FL. 33401, 26.705829, -80.051017
+Location, 333 Las Olas Way, Ft Lauderdale, FL. 33301, is within <X> miles, marking the destination as visited!
+
+Current location:
 > 545 Hibiscus St, West Palm Beach, FL 33401
 Bill of lading number 1, being carried by YRC
- - Origin: 333 Las Olas Way, Ft Lauderdale, FL. 33301, 26.117569, -80.141218
- - 1st stop: 222 Lakeview Ave, West Palm Beach, FL. 33401, 26.705829, -80.051017
- - Destination: 545 Hibiscus St, West Palm Beach, FL 33401, 26.709269, -80.056220
+ - * Origin: 333 Las Olas Way, Ft Lauderdale, FL. 33301, 26.117569, -80.141218
+ - * Destination: 222 Lakeview Ave, West Palm Beach, FL. 33401, 26.705829, -80.051017
+Location, 545 Hibiscus St, West Palm Beach, FL 33401, is within <X> miles, marking the destination as visited!
 ```
 
 ### What we are looking for
