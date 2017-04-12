@@ -27,7 +27,6 @@ module Exercise
                   else
                     @commit_type[:'Any other event']
                   end
-
         result
       end
     end
