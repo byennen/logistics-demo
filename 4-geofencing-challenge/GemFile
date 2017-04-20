@@ -2,4 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 gem 'rspec'
+gem 'activerecord'
+gem 'sqlite3'
+gem 'guard-rspec', require: false
+gem 'factory_girl'
+gem 'StreetAddress', :require => "street_address"
 gem 'geocoder'
