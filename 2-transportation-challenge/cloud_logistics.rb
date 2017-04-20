@@ -20,11 +20,17 @@ end
 
 module CloudLogistics
   class Stop < ActiveRecord::Base
-    belongs_to :feights
+    belongs_to :feight
+
+    include ActiveModel::Validations
+    validates_presence_of :address
   end
 
   class Feight < ActiveRecord::Base
     has_many :stops
+
+    include ActiveModel::Validations
+    validates_presence_of :carrier, :origin, :destination
 
     def load_questions
       @feight = Feight.new

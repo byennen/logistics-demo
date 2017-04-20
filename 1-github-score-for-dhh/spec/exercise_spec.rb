@@ -15,7 +15,7 @@ describe Exercise::Calculator do
     end
 
     it '#calculate_score' do
-      expect {@score.calculate_score}.to change {@score.score}.by_at_least(1)
+      expect { @score.calculate_score }.to change { @score.score }.by_at_least(1)
       expect(@score.calculate_score.is_a?(Integer)).to eq true
     end
 

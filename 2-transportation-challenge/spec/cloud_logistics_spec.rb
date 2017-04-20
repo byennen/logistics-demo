@@ -11,10 +11,6 @@ describe CloudLogistics do
     it 'has an address' do
       expect(@stop.address).to eq('West Palm Beach')
     end
-
-    describe 'validations' do
-      it { should validate_presence_of :address }
-    end
   end
 
   describe CloudLogistics::Feight do
@@ -44,6 +40,5 @@ describe CloudLogistics do
     it 'has a destination' do
       expect(@feight.destination).to eq('Orlando')
     end
-
   end
 end
